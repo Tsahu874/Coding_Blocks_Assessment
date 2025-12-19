@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Profile Generator</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f3f4f6;
+        padding: 30px;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      .wrapper {
+        display: flex;
+        gap: 40px;
+      }
+
+      /* Left Form */
+      .form {
+        width: 300px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      label {
+        font-size: 14px;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      /* Right Card */
+      .card {
+        width: 300px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .card p {
+        font-size: 14px;
+        margin-top: 10px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+      }
+
+      .card h3 {
+        margin-bottom: 5px;
+      }
+
+      .card h4 {
+        color: blue;
+        margin-bottom: 10px;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Live Profile Generator</h2>
+
+    <div class="wrapper">
+      <!-- LEFT SIDE INPUT -->
+      <div class="form">
+        <label>Name</label>
+        <input type="text" id="nameInput" placeholder="Enter name" />
+
+        <label>Role</label>
+        <input type="text" id="roleInput" placeholder="Enter role" />
+
+        <label>Short Bio</label>
+        <textarea
+          id="bioInput"
+          rows="4"
+          placeholder="Enter short bio"
+        ></textarea>
+      </div>
+
+      <!-- RIGHT SIDE PREVIEW -->
+      <div class="card">
+        <h3 id="nameText">Name</h3>
+        <h4 id="roleText">Role</h4>
+        <p id="bioText">short bio</p>
+      </div>
+    </div>
+
+    <script>
+      const nameInput = document.getElementById("nameInput");
+      const roleInput = document.getElementById("roleInput");
+      const bioInput = document.getElementById("bioInput");
+
+      const nameText = document.getElementById("nameText");
+      const roleText = document.getElementById("roleText");
+      const bioText = document.getElementById("bioText");
+
+      nameInput.addEventListener("input", () => {
+        nameText.innerText = nameInput.value || "Name";
+      });
+
+      roleInput.addEventListener("input", () => {
+        roleText.innerText = roleInput.value || "Role";
+      });
+
+      bioInput.addEventListener("input", () => {
+        bioText.innerText = bioInput.value || "short bio";
+      });
+    </script>
+  </body>
+</html>

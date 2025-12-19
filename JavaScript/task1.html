@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Switcher</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0f172a;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .container {
+      padding: 25px;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 7px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: white;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      transition: 0.3s;
+    }
+
+    .card {
+      background-color: #1e293b;
+      padding: 18px;
+      border-radius: 8px;
+    }
+
+    /* Light mode */
+    .light {
+      background-color: #f8fafc;
+      color: black;
+    }
+
+    .light .card {
+      background-color: #e2e8f0;
+    }
+
+    /* Card sizes */
+    .small .card {
+      font-size: 12px;
+      padding: 10px;
+    }
+
+    .medium .card {
+      font-size: 15px;
+      padding: 18px;
+    }
+
+    .large .card {
+      font-size: 19px;
+      padding: 28px;
+    }
+
+    /* List view */
+    .list {
+      grid-template-columns: 1fr;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Theme & Layout Controller</h1>
+
+    <div class="buttons">
+      <button onclick="lightMode()">Light</button>
+      <button onclick="darkMode()">Dark</button>
+
+      <button onclick="changeSize('small')">Small</button>
+      <button onclick="changeSize('medium')">Medium</button>
+      <button onclick="changeSize('large')">Large</button>
+
+      <button onclick="showGrid()">Grid</button>
+      <button onclick="showList()">List</button>
+    </div>
+
+    <!-- cards -->
+    <div class="cards medium" id="cardBox">
+      <div class="card">First Card</div>
+      <div class="card">Second Card</div>
+      <div class="card">Third Card</div>
+      <div class="card">Fourth Card</div>
+    </div>
+  </div>
+
+  <script>
+    const page = document.body;
+    const cardBox = document.getElementById("cardBox");
+
+    // theme functions
+    function lightMode() {
+      page.classList.add("light");
+    }
+
+    function darkMode() {
+      page.classList.remove("light");
+    }
+
+    // size change
+    function changeSize(size) {
+      cardBox.classList.remove("small", "medium", "large");
+      cardBox.classList.add(size);
+    }
+
+    // layout change
+    function showGrid() {
+      cardBox.classList.remove("list");
+    }
+
+    function showList() {
+      cardBox.classList.add("list");
+    }
+  </script>
+</body>
+</html>

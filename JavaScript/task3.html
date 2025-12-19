@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Configurator</title>
+</head>
+<body>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      padding: 40px;
+    }
+
+    .card {
+      width: 260px;
+      border: 2px solid #2563eb;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .plan {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 6px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Pricing Configurator</h2>
+
+  <div class="card">
+    <div class="plan" id="planName">Basic</div>
+    <div class="price" id="price">₹499</div>
+
+    <select id="planSelect" onchange="changePlan()">
+      <option>Basic</option>
+      <option>Pro</option>
+      <option>Premium</option>
+    </select>
+
+    <button onclick="billing()">Toggle Monthly/Yearly</button>
+  </div>
+
+  <script>
+    let yearly = false;
+
+    function changePlan() {
+      const plan = document.getElementById("planSelect").value;
+      document.getElementById("planName").innerText = plan;
+
+      updatePrice(plan);
+    }
+
+    function billing() {
+      yearly = !yearly;
+      const plan = document.getElementById("planSelect").value;
+      updatePrice(plan);
+    }
+
+    function updatePrice(plan) {
+      let price = 0;
+
+      if (plan === "Basic") {
+        price = yearly ? 4999 : 499;
+      } 
+      else if (plan === "Pro") {
+        price = yearly ? 9999 : 999;
+      } 
+      else if (plan === "Premium") {
+        price = yearly ? 14999 : 1499;
+      }
+
+      document.getElementById("price").innerText = "₹" + price;
+    }
+  </script>
+
+</body>
+</html>
